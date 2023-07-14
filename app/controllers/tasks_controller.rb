@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     @q = Task.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    @tasks = @q.result(distinct: true).order(deadline: :desc)
   end
 
   # GET /tasks/1
